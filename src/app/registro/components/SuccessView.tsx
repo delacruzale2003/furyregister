@@ -1,25 +1,31 @@
-import { CheckCircle2 } from 'lucide-react'
-
 export default function SuccessView() {
   return (
-    <div className="text-center animate-in slide-in-from-bottom-8 duration-700">
-      <div className="bg-white rounded-[3.5rem] p-12 shadow-2xl mb-8">
-        <div className="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8">
-          <CheckCircle2 size={64} strokeWidth={2.5} />
-        </div>
-        
-        <h2 className="text-4xl font-black text-zinc-900 mb-4 tracking-tighter uppercase leading-none">
-          ¡Registro <br /> Exitoso!
-        </h2>
-        
-        <p className="text-zinc-500 font-bold uppercase tracking-widest text-xs">
-          Ya estás participando en el sorteo.
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-center p-4 animate-in fade-in duration-700">
+      
+      {/* Logo Superior */}
+      <img 
+        src="/logofurymoto.png" 
+        alt="Logo Fury Moto" 
+        className="h-16 w-auto mb-8 object-contain"
+      />
+
+      {/* Imagen Principal */}
+      <img 
+        src="/prizefury.png" 
+        alt="Premio" 
+        className="w-full max-w-sm mb-6 object-contain"
+      />
+
+      {/* Textos Inferiores */}
+      <div className="flex flex-col ">
+        <p className="text-md  text-white   ">
+          Sorteos cada semana
+        </p>
+        <p className="text-md text-white  ">
+          Imágenes referenciales*
         </p>
       </div>
 
-      <p className="text-white/80 text-[10px] font-black uppercase tracking-[0.4em]">
-        Mucha Suerte
-      </p>
     </div>
   )
 }
