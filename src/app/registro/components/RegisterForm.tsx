@@ -66,7 +66,7 @@ export default function RegisterForm({ campaignId, loading, setLoading, setSucce
         <label className="text-[14px] sm:text-[15px] font-eb text-white ml-2 uppercase tracking-wide">Nombres y Apellidos :</label>
         <input 
           type="text" required
-          className="w-full px-5 py-2 rounded-full bg-white border-none outline-none text-black font-semibold text-sm shadow-inner focus:ring-4 focus:ring-black/10 transition-all"
+          className="w-full px-5 py-1.5 rounded-full bg-white border-none outline-none text-black font-semibold text-sm shadow-inner focus:ring-4 focus:ring-black/10 transition-all"
           onChange={e => setFormData({...formData, fullName: e.target.value})}
         />
       </div>
@@ -75,7 +75,7 @@ export default function RegisterForm({ campaignId, loading, setLoading, setSucce
         <label className="text-[14px] sm:text-[15px] font-eb text-white ml-2 uppercase tracking-wide">Correo :</label>
         <input 
           type="email" required
-          className="w-full px-5 py-2 rounded-full bg-white border-none outline-none text-black font-semibold text-sm shadow-inner focus:ring-4 focus:ring-black/10 transition-all"
+          className="w-full px-5 py-1.5 rounded-full bg-white border-none outline-none text-black font-semibold text-sm shadow-inner focus:ring-4 focus:ring-black/10 transition-all"
           onChange={e => setFormData({...formData, email: e.target.value})}
         />
       </div>
@@ -84,14 +84,14 @@ export default function RegisterForm({ campaignId, loading, setLoading, setSucce
         <label className="text-[14px] sm:text-[15px] font-eb text-white ml-2 uppercase tracking-wide">Teléfono :</label>
         <input 
           type="tel" maxLength={9} required
-          className="w-full px-5 py-2 rounded-full bg-white border-none outline-none text-black font-semibold text-sm shadow-inner focus:ring-4 focus:ring-black/10 transition-all"
+          className="w-full px-5 py-1.5 rounded-full bg-white border-none outline-none text-black font-semibold text-sm shadow-inner focus:ring-4 focus:ring-black/10 transition-all"
           onChange={e => setFormData({...formData, phone: e.target.value.replace(/\D/g,'')})}
         />
       </div>
 
       <div className="space-y-1">
         <label className="text-[14px] sm:text-[15px] font-eb text-white ml-2 uppercase tracking-wide">Subir foto de voucher :</label>
-        <label className={`flex items-center justify-between w-full px-5 py-2.5 rounded-full cursor-pointer transition-all bg-white shadow-inner focus-within:ring-4 focus-within:ring-black/10 ${file ? 'text-[#fcbf28]' : 'text-black/40'}`}>
+        <label className={`flex items-center justify-between w-full px-5 py-2 rounded-full cursor-pointer transition-all bg-white shadow-inner focus-within:ring-4 focus-within:ring-black/10 ${file ? 'text-[#fcbf28]' : 'text-black/40'}`}>
           <div className="flex items-center gap-3">
             {file ? <CheckCircle2 size={18} /> : <Camera size={18} className="opacity-50" />}
             <span className="text-[13px] font-bold truncate max-w-[150px] sm:max-w-[200px]">
