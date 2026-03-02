@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+/* 1. Declarar la fuente (Asegúrate que el archivo esté en public/fonts/) */
+@font-face {
+  font-family: 'MontserratExtraBold';
+  src: url('/Montserrat-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #000000; /* Cambié a negro por tu diseño */
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* 2. Registrar la fuente en el sistema de Tailwind */
+  --font-montserrat: "MontserratExtraBold", sans-serif;
+}
+
+/* 3. Clase personalizada para uso ultra rápido */
+@utility font-eb {
+  font-family: var(--font-montserrat);
+  font-weight: 800;
+}
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
