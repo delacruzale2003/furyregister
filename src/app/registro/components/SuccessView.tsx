@@ -1,6 +1,6 @@
 export default function SuccessView() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-center p-4 animate-in fade-in duration-700">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-transparent text-center p-4 animate-in fade-in duration-700">
       
       {/* Logo Superior */}
       <img 

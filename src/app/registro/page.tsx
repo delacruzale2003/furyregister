@@ -53,8 +53,10 @@ export default function RegisterPage() {
   )
 
   return (
-    <main className="min-h-screen bg-black flex items-center justify-center  md:p-8 font-sans selection:bg-white/30">
-      <div className="w-full max-w-md bg-transparent rounded-[3rem] p-8 sm:p-10 animate-in fade-in zoom-in duration-500">
+    <main 
+      className="min-h-screen bg-black bg-[url('/furybg.png')] bg-cover bg-center bg-no-repeat flex items-center justify-center  md:p-8 font-sans selection:bg-white/30"
+    >
+      <div className="w-full max-w-md bg-transparent rounded-[3rem] p-9 sm:p-10 animate-in fade-in zoom-in duration-500">
         
         {!success ? (
           <>
@@ -65,7 +67,7 @@ export default function RegisterPage() {
               <img 
                 src="/registro.png" 
                 alt="Registro" 
-                className="w-47 mb-2 h-auto object-contain block" 
+                className="w-43 mb-2 h-auto object-contain block" 
               />
             </div>
 
