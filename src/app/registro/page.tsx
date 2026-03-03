@@ -17,8 +17,6 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
-  
-  // Estado para el Modal de Términos
   const [showTerms, setShowTerms] = useState(true)
 
   useEffect(() => {
@@ -59,15 +57,16 @@ export default function RegisterPage() {
     <main 
       className="min-h-screen bg-black bg-[url('/furybg.png')] bg-cover bg-center bg-no-repeat flex items-center justify-center p-4 md:p-8 font-sans selection:bg-white/30"
     >
-      <div className="w-full max-w-md bg-transparent animate-in fade-in zoom-in duration-500">
+      <div className="w-full max-w-md bg-transparent">
         
         {!success ? (
           <>
-            {/* MODAL DE TÉRMINOS Y CONDICIONES */}
             {showTerms ? (
-              <div className="relative bg-black backdrop-blur-xl border-2 border-[#f9c433] rounded-[1.8rem] p-6 pt-16 shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
-                
-                {/* Botón de cerrar (X) estilizado */}
+              /* MODAL DE TÉRMINOS - Se añade una KEY para diferenciarlo */
+              <div 
+                key="modal-terms"
+                className="relative bg-black backdrop-blur-xl border-2 border-[#f9c433] rounded-[1.8rem] p-6 pt-16 shadow-2xl overflow-hidden flex flex-col max-h-[85vh] animate-in fade-in zoom-in duration-300"
+              >
                 <button 
                   onClick={() => setShowTerms(false)}
                   className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full border-2 border-[#f9c433] text-[#f9c433] hover:bg-[#f9c433] hover:text-black transition-all active:scale-90"
@@ -85,22 +84,17 @@ export default function RegisterPage() {
                       <span className="text-white font-bold">Mecánica:</span> Participan personas naturales mayores de 18 años, con residencia legal y domicilio en el territorio nacional del Perú, por la compra de 02 botellas de Fury Energy a S/4.90 (precio regular: Desde 2 x S/ 6.60) en Tiendas TAMBO, podrás participar de la promoción “Motocorp & Fury”, regístrate con tu boleta de compra ingresando al QR y podrás ganar 1 de las motos que se sortearán semanalmente.
                     </p>
 
-                    <p>
-                      <span className="text-white font-bold">Stock de premios:</span> 8 motos Mig125-25. Organiza AC CORPORATIVO. (antes Corporación Lindley S.A) Av. Javier Prado Este 6210, piso 10 La Molina. Consultas al 0800-1-4000 (Horario de lunes a viernes de 8.00 am a 5.00 pm).
-                    </p>
-
                     <div className="bg-white/5 p-3 rounded-2xl border border-white/5">
-                       <p className="text-white font-bold underline mb-1">Fechas de sorteos:</p>
-                       <p className="text-[10px] leading-relaxed">
+                       <p className="text-white font-bold underline mb-1 text-[10px]">Fechas de sorteos:</p>
+                       <p className="text-[9px] leading-relaxed">
                          09/03/2026, 16/03/2026, 23/03/2026, 30/03/2026, 06/04/2026, 13/04/2026, 20/04/2026, 27/04/2026.
                        </p>
                     </div>
 
-                    {/* SECCIÓN DE CHECKBOXES */}
                     <div className="space-y-3 pt-2">
                       <div className="flex gap-3 items-start">
-                        <div className="mt-0.5 w-5 h-5 rounded border border-[#f9c433] bg-[#f9c433]/20 flex items-center justify-center shrink-0">
-                          <Check size={14} className="text-[#f9c433] stroke-[4]" />
+                        <div className="mt-0.5 w-4 h-4 rounded border border-[#f9c433] bg-[#f9c433]/20 flex items-center justify-center shrink-0">
+                          <Check size={12} className="text-[#f9c433] stroke-[4]" />
                         </div>
                         <p className="text-white/90 text-[10px] leading-tight">
                           Al participar autorizo expresamente a Motocorp S.A.C. a recopilar, almacenar y gestionar mis datos personales para fines comerciales.
@@ -108,11 +102,11 @@ export default function RegisterPage() {
                       </div>
 
                       <div className="flex gap-3 items-start">
-                        <div className="mt-0.5 w-5 h-5 rounded border border-[#f9c433] bg-[#f9c433]/20 flex items-center justify-center shrink-0">
-                          <Check size={14} className="text-[#f9c433] stroke-[4]" />
+                        <div className="mt-0.5 w-4 h-4 rounded border border-[#f9c433] bg-[#f9c433]/20 flex items-center justify-center shrink-0">
+                          <Check size={12} className="text-[#f9c433] stroke-[4]" />
                         </div>
                         <p className="text-white/90 text-[10px] leading-tight">
-                          Declaro también conocer y aceptar que, en caso de resultar ganador(a) de una moto, esta será entregada obligatoriamente en la tienda de Motocorp más cercana coordinada previamente, a la cual deberé acercarme para su recojo.
+                          Declaro conocer y aceptar que, en caso de resultar ganador(a), la moto será entregada en la tienda Motocorp coordinada.
                         </p>
                       </div>
                     </div>
@@ -120,11 +114,14 @@ export default function RegisterPage() {
                 </div>
               </div>
             ) : (
-              /* VISTA DE REGISTRO */
-              <div className="animate-in slide-in-from-bottom-4 duration-500">
+              /* VISTA DE REGISTRO - KEY para forzar limpieza de estilos de borde */
+              <div 
+                key="register-view"
+                className="animate-in fade-in slide-in-from-bottom-2 duration-500 border-0 outline-none"
+              >
                 <StoreHeader />
 
-                <div className="-ml-8 sm:-ml-10 mb-4 mt-2">
+                <div className="-ml-5 sm:-ml-10 mb-4 mt-2">
                   <img 
                     src="/registro.png" 
                     alt="Registro" 
@@ -150,17 +147,9 @@ export default function RegisterPage() {
       </div>
 
       <style jsx global>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(249, 196, 51, 0.4);
-          border-radius: 10px;
-        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(249, 196, 51, 0.4); border-radius: 10px; }
       `}</style>
     </main>
   )
