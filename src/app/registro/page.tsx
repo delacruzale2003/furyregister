@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
-import { Loader2, AlertCircle, X } from 'lucide-react'
+import { Loader2, AlertCircle, X, Check } from 'lucide-react'
 
 // Sub-componentes
 import StoreHeader from './components/StoreHeader'
@@ -65,18 +65,18 @@ export default function RegisterPage() {
           <>
             {/* MODAL DE TÉRMINOS Y CONDICIONES */}
             {showTerms ? (
-              <div className="relative bg-black backdrop-blur-xl border-3 border-[#f9c433] rounded-[1.8rem] p-6 pt-16 shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
+              <div className="relative bg-black backdrop-blur-xl border-2 border-[#f9c433] rounded-[1.8rem] p-6 pt-16 shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
                 
                 {/* Botón de cerrar (X) estilizado */}
                 <button 
                   onClick={() => setShowTerms(false)}
-                  className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full border-3 border-[#f9c433] text-[#f9c433] hover:bg-[#f9c433] hover:text-black transition-all active:scale-90"
+                  className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full border-2 border-[#f9c433] text-[#f9c433] hover:bg-[#f9c433] hover:text-black transition-all active:scale-90"
                 >
-                  <X size={24} strokeWidth={4} />
+                  <X size={24} strokeWidth={3} />
                 </button>
 
-                <div className="flex-1 overflow-y-auto pr-2 space-y-2 custom-scrollbar">
-                  <div className="text-white/80 text-[11px] leading-relaxed text-justify space-y-3">
+                <div className="flex-1 overflow-y-auto pr-2 space-y-4 custom-scrollbar">
+                  <div className="text-white/80 text-[11px] leading-relaxed text-justify space-y-4">
                     <p className="text-white font-bold">
                       Promoción válida a nivel nacional a través de las Tiendas TAMBO, del 02 de marzo al 27 de abril de 2026 y/o hasta agotar stock.
                     </p>
@@ -94,6 +94,27 @@ export default function RegisterPage() {
                        <p className="text-[10px] leading-relaxed">
                          09/03/2026, 16/03/2026, 23/03/2026, 30/03/2026, 06/04/2026, 13/04/2026, 20/04/2026, 27/04/2026.
                        </p>
+                    </div>
+
+                    {/* SECCIÓN DE CHECKBOXES */}
+                    <div className="space-y-3 pt-2">
+                      <div className="flex gap-3 items-start">
+                        <div className="mt-0.5 w-5 h-5 rounded border border-[#f9c433] bg-[#f9c433]/20 flex items-center justify-center shrink-0">
+                          <Check size={14} className="text-[#f9c433] stroke-[4]" />
+                        </div>
+                        <p className="text-white/90 text-[10px] leading-tight">
+                          Al participar autorizo expresamente a Motocorp S.A.C. a recopilar, almacenar y gestionar mis datos personales para fines comerciales.
+                        </p>
+                      </div>
+
+                      <div className="flex gap-3 items-start">
+                        <div className="mt-0.5 w-5 h-5 rounded border border-[#f9c433] bg-[#f9c433]/20 flex items-center justify-center shrink-0">
+                          <Check size={14} className="text-[#f9c433] stroke-[4]" />
+                        </div>
+                        <p className="text-white/90 text-[10px] leading-tight">
+                          Declaro también conocer y aceptar que, en caso de resultar ganador(a) de una moto, esta será entregada obligatoriamente en la tienda de Motocorp más cercana coordinada previamente, a la cual deberé acercarme para su recojo.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
