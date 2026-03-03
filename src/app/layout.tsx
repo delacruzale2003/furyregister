@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Fury Motocorp - Tambo",
   description: "Registro para la campaña de Fury Motocorp en Tambo",
+  icons: {
+    icon: "/favicon.png", // Next.js buscará esto en la carpeta public
+    // Opcional: si quieres definir iconos para Apple
+    apple: "/favicon.png", 
+  },
 };
 
 export default function RootLayout({
