@@ -22,7 +22,29 @@ export default function RegisterForm({ campaignId, loading, setLoading, setSucce
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); setLoading(true); setError('')
+    e.preventDefault(); 
+    setError('');
+
+    // --- INICIO DE VALIDACIONES ---
+    if (!formData.fullName.trim()) {
+      setError('Por favor, ingresa tus nombres y apellidos.')
+      return
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) {
+      setError('Por favor, ingresa un correo válido (ejemplo: correo@dominio.com).')
+      return
+    }
+
+    const phoneRegex = /^[0-9]{9}$/
+    if (!phoneRegex.test(formData.phone)) {
+      setError('El teléfono debe contener exactamente 9 números.')
+      return
+    }
+    // --- FIN DE VALIDACIONES ---
+
+    setLoading(true);
     try {
       const optimized = await compressImage(file!)
       const path = `${campaignId}/registros_generales/${Date.now()}.webp`
@@ -62,10 +84,12 @@ export default function RegisterForm({ campaignId, loading, setLoading, setSucce
       {error && <div className="p-3 bg-red-500/20 text-white text-[10px] font-bold rounded-2xl text-center uppercase tracking-tighter">{error}</div>}
       
       {/* Ajustamos labels a text-sm porque ExtraBold ya los hace notar mucho */}
+     {/* Ajustamos labels a text-sm porque ExtraBold ya los hace notar mucho */}
       <div className="space-y-1">
         <label className="text-[14px] sm:text-[15px] font-eb text-white ml-2 uppercase tracking-wide">Nombres y Apellidos :</label>
         <input 
           type="text" required
+          value={formData.fullName || ''}
           className="w-full px-5 py-1.5 rounded-full bg-white border-none outline-none text-black font-semibold text-sm shadow-inner focus:ring-4 focus:ring-black/10 transition-all"
           onChange={e => setFormData({...formData, fullName: e.target.value})}
         />
@@ -75,6 +99,7 @@ export default function RegisterForm({ campaignId, loading, setLoading, setSucce
         <label className="text-[14px] sm:text-[15px] font-eb text-white ml-2 uppercase tracking-wide">Correo :</label>
         <input 
           type="email" required
+          value={formData.email || ''}
           className="w-full px-5 py-1.5 rounded-full bg-white border-none outline-none text-black font-semibold text-sm shadow-inner focus:ring-4 focus:ring-black/10 transition-all"
           onChange={e => setFormData({...formData, email: e.target.value})}
         />
@@ -84,6 +109,7 @@ export default function RegisterForm({ campaignId, loading, setLoading, setSucce
         <label className="text-[14px] sm:text-[15px] font-eb text-white ml-2 uppercase tracking-wide">Teléfono :</label>
         <input 
           type="tel" maxLength={9} required
+          value={formData.phone || ''}
           className="w-full px-5 py-1.5 rounded-full bg-white border-none outline-none text-black font-semibold text-sm shadow-inner focus:ring-4 focus:ring-black/10 transition-all"
           onChange={e => setFormData({...formData, phone: e.target.value.replace(/\D/g,'')})}
         />
